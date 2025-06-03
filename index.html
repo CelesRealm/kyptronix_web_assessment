@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dubai Premium Travel Platform</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <nav class="container" aria-label="Primary navigation">
+    <div class="nav-links" role="menubar">
+      <a href="#hero" class="nav-link active" role="menuitem" tabindex="0">Home</a>
+      <a href="#search" class="nav-link" role="menuitem" tabindex="-1">Search</a>
+      <a href="#services" class="nav-link" role="menuitem" tabindex="-1">Services</a>
+      <a href="#testimonials" class="nav-link" role="menuitem" tabindex="-1">Testimonials</a>
+      <a href="#map" class="nav-link" role="menuitem" tabindex="-1">Map</a>
+      <a href="#footer" class="nav-link" role="menuitem" tabindex="-1">Contact</a>
+    </div>
+    <div class="switch-container">
+      <div class="switch dark-mode" role="switch" aria-checked="false" tabindex="0" id="darkToggle" aria-label="Toggle dark mode">
+        <input type="checkbox" id="darkModeCheck" />
+        <span class="slider"></span>
+      </div>
+      <div class="lang-switch" role="button" tabindex="0" aria-label="Language switcher" id="langSwitcher" title="Switch language EN/AR">EN</div>
+    </div>
+  </nav>
+</header>
+
+<!-- Hero Banner Section -->
+<section class="hero-banner" id="hero" aria-label="Hero banner">
+  <video autoplay muted loop playsinline class="hero-video" aria-hidden="true">
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm" type="video/webm" />
+    <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" type="video/mp4" />
+  </video>
+  <div class="hero-content">
+    <h1 class="hero-tagline" aria-live="polite" aria-atomic="true">
+      <span class="typed-text"></span>
+    </h1>
+    <div class="hero-ctas" role="region" aria-label="Call to action buttons">
+      <button class="btn-cta" tabindex="0">Book Now</button>
+      <button class="btn-cta" tabindex="0">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<!-- Search Section -->
+<section class="search-section container" id="search" aria-label="Search travel options">
+  <div class="search-tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-type="flights" class="search-tab active" tabindex="0" id="tab-flights">Flights</button>
+    <button role="tab" aria-selected="false" data-type="cars" class="search-tab" tabindex="-1" id="tab-cars">Cars</button>
+    <button role="tab" aria-selected="false" data-type="villas" class="search-tab" tabindex="-1" id="tab-villas">Villas</button>
+    <button role="tab" aria-selected="false" data-type="nightlife" class="search-tab" tabindex="-1" id="tab-nightlife">Nightlife</button>
+    <button role="tab" aria-selected="false" data-type="esim" class="search-tab" tabindex="-1" id="tab-esim">eSIM</button>
+  </div>
+  <div class="search-fields">
+    <div class="search-input-container">
+      <input
+        type="text"
+        id="searchInput"
+        class="morph-input"
+        aria-label="Search input"
+        placeholder="Search for flights..."
+        autocomplete="off"
+      />
+    </div>
+    <div class="city-selector" id="citySelector" tabindex="0" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="selectedCityLabel">
+      <div class="city-dropdown" id="cityDropdown" role="combobox" aria-controls="cityList" aria-autocomplete="list" aria-expanded="false">
+        <div class="city-info flex-center" style="gap:8px;">
+          <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France flag" class="city-flag" id="selectedCityFlag" />
+          <span id="selectedCityLabel">Paris</span>
+        </div>
+        <span class="dropdown-arrow" id="dropdownArrow"></span>
+      </div>
+      <div class="city-list" role="listbox" id="cityList" tabindex="-1" aria-label="Choose city">
+        <div class="city-list-item" role="option" data-city="Paris" data-flag="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" tabindex="0">
+          <img src="https://upload.wikimedia.org/wikipedia/en/c/c3/Flag_of_France.svg" alt="France flag" class="city-flag" /> Paris
+        </div>
+        <div class="city-list-item" role="option" data-city="Dubai" data-flag="https://upload.wikimedia.org/wikipedia/commons/c/ca/Flag_of_the_United_Arab_Emirates.svg" tabindex="0">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/ca/Flag_of_the_United_Arab_Emirates.svg" alt="UAE flag" class="city-flag" /> Dubai
+        </div>
+        <div class="city-list-item" role="option" data-city="New York" data-flag="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" tabindex="0">
+          <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="USA flag" class="city-flag" /> New York
+        </div>
+        <div class="city-list-item" role="option" data-city="Tokyo" data-flag="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" tabindex="0">
+          <img src="https://upload.wikimedia.org/wikipedia/en/9/9e/Flag_of_Japan.svg" alt="Japan flag" class="city-flag" /> Tokyo
+        </div>
+      </div>
+    </div>
+    <div class="search-btn-container">
+      <button class="search-btn" id="searchBtn" aria-label="Perform search">Search
+        <span class="loader" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section class="services-section" id="services" aria-label="Travel services available">
+  <h2 class="services-header">Our Services</h2>
+  <div class="services-filter" role="radiogroup" aria-label="Service categories filter">
+    <button role="radio" aria-checked="true" class="filter-btn active" data-filter="all" tabindex="0">All</button>
+    <button role="radio" aria-checked="false" class="filter-btn" data-filter="flights" tabindex="-1">Flights</button>
+    <button role="radio" aria-checked="false" class="filter-btn" data-filter="cars" tabindex="-1">Cars</button>
+    <button role="radio" aria-checked="false" class="filter-btn" data-filter="villas" tabindex="-1">Villas</button>
+    <button role="radio" aria-checked="false" class="filter-btn" data-filter="nightlife" tabindex="-1">Nightlife</button>
+    <button role="radio" aria-checked="false" class="filter-btn" data-filter="esim" tabindex="-1">eSIM</button>
+  </div>
+  <div class="services-grid">
+    <div class="service-card" data-category="flights" tabindex="0" role="button" aria-pressed="false" aria-label="Flight Booking service card">
+      <div class="service-card-inner">
+        <div class="service-front" style="background-image:url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80');">
+          Flight Booking
+        </div>
+        <div class="service-back">
+          <p>Book the best flights to and from Dubai and worldwide with exclusive offers.</p>
+          <div class="counters">
+            <div class="counter" aria-label="Over 1000 flights booked">
+              <strong class="counter-value">1000</strong>+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="service-card" data-category="cars" tabindex="0" role="button" aria-pressed="false" aria-label="Car Rentals service card">
+      <div class="service-card-inner">
+        <div class="service-front" style="background-image:url('https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80');">
+          Car Rentals
+        </div>
+        <div class="service-back">
+          <p>Rent luxury cars with flexible terms and premium service.</p>
+          <div class="counters">
+            <div class="counter" aria-label="500+ car rentals made">
+              <strong class="counter-value">500</strong>+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="service-card" data-category="villas" tabindex="0" role="button" aria-pressed="false" aria-label="Villa Reservations service card">
+      <div class="service-card-inner">
+        <div class="service-front" style="background-image:url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80');">
+          Villa Reservations
+        </div>
+        <div class="service-back">
+          <p>Stay in exclusive villas equipped with all modern luxuries.</p>
+          <div class="counters">
+            <div class="counter" aria-label="300+ villas reserved">
+              <strong class="counter-value">300</strong>+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="service-card" data-category="nightlife" tabindex="0" role="button" aria-pressed="false" aria-label="Night Club Ticketing service card">
+      <div class="service-card-inner">
+        <div class="service-front" style="background-image:url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80');">
+          Night Club Ticketing
+        </div>
+        <div class="service-back">
+          <p>Book access to Dubai's most exclusive night clubs and VIP areas.</p>
+          <div class="counters">
+            <div class="counter" aria-label="800+ tickets sold">
+              <strong class="counter-value">800</strong>+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="service-card" data-category="esim" tabindex="0" role="button" aria-pressed="false" aria-label="eSIM Purchase service card">
+      <div class="service-card-inner">
+        <div class="service-front" style="background-image:url('https://images.unsplash.com/photo-1519985176271-adb1088fa94c?auto=format&fit=crop&w=800&q=80');">
+          eSIM Purchase
+        </div>
+        <div class="service-back">
+          <p>Get instant global connectivity with our eSIM packages.</p>
+          <div class="counters">
+            <div class="counter" aria-label="1200+ eSIMs sold">
+              <strong class="counter-value">1200</strong>+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials-section" id="testimonials" aria-label="Customer testimonials">
+  <h2 class="testimonials-header">What Our Customers Say</h2>
+  <div class="testimonials-slider" tabindex="0" aria-live="polite" aria-atomic="true">
+    <div class="testimonials-wrapper" id="testimonialsWrapper">
+      <article class="testimonial-card" tabindex="0" aria-label="Testimonial from Alice">
+        <p class="testimonial-content">"This platform made booking my holiday to Dubai easy and luxurious. The villa was stunning!"</p>
+        <p class="testimonial-author">- Alice M.</p>
+      </article>
+      <article class="testimonial-card" tabindex="0" aria-label="Testimonial from James">
+        <p class="testimonial-content">"Exceptional service on the flights and the car was pristine. Highly recommend!"</p>
+        <p class="testimonial-author">- James K.</p>
+      </article>
+      <article class="testimonial-card" tabindex="0" aria-label="Testimonial from Sara">
+        <p class="testimonial-content">"The nightlife ticketing was seamless and fun. Loved the VIP experience!"</p>
+        <p class="testimonial-author">- Sara L.</p>
+      </article>
+      <article class="testimonial-card" tabindex="0" aria-label="Testimonial from Omar">
+        <p class="testimonial-content">"eSIM setup was quick and worked perfectly during my Dubai trip."</p>
+        <p class="testimonial-author">- Omar A.</p>
+      </article>
+    </div>
+  </div>
+  <div class="nav-testimonial-btns" role="group" aria-label="Navigate testimonials">
+    <button class="nav-testimonial-btn" aria-label="Previous testimonial" id="prevTestimonial">&#10094;</button>
+    <button class="nav-testimonial-btn" aria-label="Next testimonial" id="nextTestimonial">&#10095;</button>
+  </div>
+</section>
+
+<!-- Map Section -->
+<section class="map-section container" id="map" aria-label="Interactive Dubai map">
+  <h2 class="map-header">Explore Dubai Locations</h2>
+  <svg viewBox="0 0 600 400" class="svg-map" aria-hidden="true" role="img" aria-label="Map of Dubai with location pins" xmlns="http://www.w3.org/2000/svg" style="max-height: 400px; width: 100%; border-radius: 16px;">
+    <rect width="600" height="400" fill="#d9f0ff" />
+    <!-- Location Pins -->
+    <circle class="location-pin" cx="300" cy="150" r="14" role="button" tabindex="0" aria-describedby="locBurj" />
+    <circle class="location-pin" cx="150" cy="220" r="14" role="button" tabindex="0" aria-describedby="locPalm" />
+    <circle class="location-pin" cx="460" cy="270" r="14" role="button" tabindex="0" aria-describedby="locMarina" />
+    <circle class="location-pin" cx="380" cy="320" r="14" role="button" tabindex="0" aria-describedby="locMall" />
+  </svg>
+  <div class="popup" role="tooltip" id="popup" aria-live="polite" aria-atomic="true" hidden></div>
+</section>
+
+<!-- Footer -->
+<footer id="footer" aria-label="Footer and newsletter subscription">
+  <div class="container">
+    <form class="newsletter" novalidate aria-label="Subscribe newsletter form">
+      <input type="email" id="newsletterEmail" name="email" placeholder="Subscribe to our newsletter" autocomplete="email" aria-required="true" aria-describedby="newsletterHelp" />
+      <button type="submit" aria-label="Subscribe to newsletter">Subscribe</button>
+    </form>
+    <div class="social-icons" aria-label="Social media links">
+      <a href="#" aria-label="Facebook" tabindex="0" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .6 0 1.343v21.314A1.342 1.342 0 0 0 1.324 24h11.495v-9.286h-3.13v-3.62h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.462.099 2.794.143v3.24l-1.918.001c-1.505 0-1.795.717-1.795 1.767v2.32h3.59l-.467 3.62h-3.123V24h6.116A1.34 1.34 0 0 0 24 22.656V1.344C24 .6 23.404 0 22.675 0z" fill="#ff5722"/></svg>
+      </a>
+      <a href="#" aria-label="Twitter" tabindex="0" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M24 4.557a9.83 9.83 0 0 1-2.828.775 4.94 4.94 0 0 0 2.165-2.724 9.865 9.865 0 0 1-3.127 1.196A4.916 4.916 0 0 0 16.616 3c-2.717 0-4.92 2.203-4.92 4.92 0 .386.044.762.127 1.124A13.958 13.958 0 0 1 1.671 3.149a4.922 4.922 0 0 0-.666 2.473c0 1.71.87 3.213 2.188 4.096a4.902 4.902 0 0 1-2.228-.616c-.054 2.388 1.686 4.37 4.152 4.828a4.935 4.935 0 0 1-2.224.084c.625 1.953 2.444 3.377 4.6 3.42a9.867 9.867 0 0 1-6.102 2.107c-.396 0-.79-.023-1.175-.069a13.94 13.94 0 0 0 7.548 2.212c9.056 0 14-7.506 14-14.01 0-.21-.004-.419-.014-.627A10.012 10.012 0 0 0 24 4.557z" fill="#ff5722"/></svg>
+      </a>
+      <a href="#" aria-label="Instagram" tabindex="0" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm7.208 2.292a1.04 1.04 0 1 1 0 2.078 1.04 1.04 0 0 1 0-2.078zm-3.208 1.333a4.58 4.58 0 1 1 0 9.16 4.58 4.58 0 0 1 0-9.16zm0 1.5a3.08 3.08 0 1 0 0 6.16 3.08 3.08 0 0 0 0-6.16z" fill="#ff5722"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
